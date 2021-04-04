@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.conter{
+				width: 200px;
+				height: 200px;
+				background: skyblue;
+			}
+			.fade-enter-active, .fade-leave-active {
+			  transition: opacity 5s;
+			}
+			.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+			  opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<transition name="fade">
+			<div v-if="isshow" class="conter">
+				
+			</div>
+			</transition>
+			<button @click="toggle">点击切换</button>
+		</div>
+		<script type="text/javascript" src="../Vue/vue.js"></script>
+		<script type="text/javascript">
+			const app=new Vue({
+				el:'#app',
+				data:{
+					isshow:true
+				},
+				methods:{
+					toggle:function(){
+						this.isshow=!this.isshow;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

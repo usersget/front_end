@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<aleat-com :html="content"></aleat-com>
+			<aleat-com1>
+				<p>小心我</p>
+			</aleat1-com1>
+		</div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			Vue.component('aleat-com',{
+				props:['html'],
+				template:`
+				<div class="aleat">
+				<h1>温馨提示</h1>
+				<div class="content">
+					{{html}}
+				</div>
+			</div>
+				`
+			})
+			Vue.component('aleat-com1',{
+				template:`
+				<div class="aleat">
+				<h1>温馨提示</h1>
+				<div class="content">
+					<slot></slot>
+				</div>
+			</div>
+				`
+			})
+			const app = new Vue({
+				el:'#app',
+				data:{
+					content:"小心熊出没"
+				}
+			})
+		</script>
+	</body>
+</html>

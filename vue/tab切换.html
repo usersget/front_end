@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- <div id="app">
+			<h1>{{title}}</h1>
+			<button @click="tabsh">首页</button>
+			<button @click="tabtwo">活动</button>
+			<button @click="tabfre">我的</button>
+			
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app=new Vue({
+				el:'#app',
+				data:{
+					title:'首页'
+				},
+				methods:{
+					tabsh:function(){
+						app.title="首页"
+					},
+					tabtwo:function(){
+						app.title="活动"
+					},
+					tabfre:function(){
+						app.title="我的"
+					}
+				}
+			})
+		</script> -->
+		
+		<div id="app">
+			<h1 v-show="tabid==1">首页</h1>
+			<h1 v-show="tabid==2">活动</h1>
+			<h1 v-show="tabid==3">我的</h1>
+			<button @click="tabsh" data-id="1">首页</button>
+			<button @click="tabsh" data-id="2">活动</button>
+			<button @click="tabsh" data-id="3">我的</button>
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app=new Vue({
+				el:'#app',
+				data:{
+					tabid:1
+				},
+				methods:{
+					tabsh:function(e){
+						console.log(e.target.dataset.id)
+						let tab=e.target.dataset.id;
+						this.tabid=tab;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

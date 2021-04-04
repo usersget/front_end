@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- stop修饰符阻止冒泡事件向上传递 -->
+		<div id="app">
+			<div class="btn" @click="clickbtn">
+				<button @click.stop="clickeven"> 按钮 </button>
+			</div>
+			<!--prevent阻止默认事件 -->
+			<form action="" method="post">
+				<input type="text" name="username" v-model="city" id="" value="" />
+				<input @click.prevent="searchWeather" type="submit" value="提交" />
+			</form>
+			
+		</div>
+		<script type="text/javascript" src="../Vue/vue.js" charset="UTF-8"></script>
+		<script type="text/javascript">
+			const app=new Vue({
+				el:'#app',
+				data:{
+					count:0,
+					city:"兰州"
+				},
+				methods:{
+					clickbtn:function(){
+						console.log("clickbtn")
+					},
+					clickeven:async function(){
+						console.log("clickeven")
+					},
+					searchWeather:function(){
+						console.log("查询 ",this.city" 天气");
+						// let httpUrl = `https//free-api.heweather.net/s6/weather/now?location=&{this.city}&key=3c497450d8e44c5280421ceaba1db581`
+						// let res=await fetch(httpUrl);
+						// let resul=await res.json();
+						// console.log(resul);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

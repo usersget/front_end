@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 单行文本输入框 -->
+			<h2>{{username}}</h2>
+			<input type="text" name="username" v-model="username" value="" />
+			<h1>多行文本</h1>
+			<textarea v-model="username"></textarea>
+			
+			<h1>复选框绑定</h1>
+			<span v-for="item in fruits">
+				
+<!-- 			<input v-for="item in fruits" type="radio" name="fruit" v-model="checkfruits" :value="item"/>
+ -->			<input  type="checkbox" name="fruit" v-model="checkfruits" :value="item"/>
+		{{item}}	</span><h2>{{checkfruits}}</h2>
+	
+	<!-- 选项框 -->
+	<h1>选项框绑定多选</h1>
+	<select v-model="citymore" multiple="multiple">
+		<option v-for="item in citys" :value="item">{{item}}</option>
+	</select>
+	<h5>{{citymore}}</h5>
+	<h1>选项框绑定单选</h1>
+	<select v-model="chockcity">
+		<option disabled value="">请选择</option>
+		<option v-for="item in citys" :value="item">{{item}}</option>
+	</select>
+	<h5>{{chockcity}}</h5>
+		</div>
+		<script type="text/javascript" src="../Vue/vue.js" charset="UTF-8"></script>
+		<script type="text/javascript">
+			const app= new Vue({
+				el:'#app',
+				data:{
+					username:'小米',
+					fruits:['香蕉','苹果','葡萄','雪梨'],
+					checkfruits:[],
+					citys:['兰州','北京','上海','广州'],
+					chockcity:'',
+					citymore:[]
+				}
+			})
+		</script>
+	</body>
+</html>

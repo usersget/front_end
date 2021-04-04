@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<!-- 从父组件传值到子组件 -->
+				<produce-com v-for="item,index in prolist" :action="ceven" :key="index" :index="index" :prolis="item"></produce-com>
+			</ul>
+			<h2>选中的产品是：{{choosetitle}}</h2>
+		</div>
+		<script type="text/javascript">
+			//产品组件
+			 Vue.component("produce-com",{
+				 props:['prolis','action'],
+				template:`<li>
+					<h3>产品名称：{{prolis.title}}</h3>
+					<button @click="choose(prolis.title)">选择产品</button>
+					<h4>产品描述：{{prolis.brief}}</h4>
+					<p>产品价格：{{prolis.price}}</p>
+				</li>`,
+				methods:{
+					choose:function(e){
+						console.log(e);
+						console.log(this.action);
+						this.action(e)
+						//想要将子元素值传递给父元素需要自定义触发事件
+						//触发一个叫cprite的事件
+						// this.$emit('cprite',e)
+					}
+				}
+			})
+			//根组件
+			const app= new Vue({
+				el:'#app',
+				data:{
+					choosetitle:'',
+					prolist:[
+						{
+							title:'产品1',
+							price:"10",
+							brief:"产品描述1"
+						},
+						{
+							title:'产品2',
+							price:"20",
+							brief:"产品描述2"
+						},
+						{
+							title:'产品3',
+							price:"30",
+							brief:"产品描述3"
+						},
+						{
+							title:'产品4',
+							price:"40",
+							brief:"产品描述4"
+						}
+					]
+				},
+				methods:{
+					ceven:function(data){
+						console.log("fed");
+						this.choosetitle=data
+					}
+				}
+				
+			})
+		</script>
+	</body>
+</html>

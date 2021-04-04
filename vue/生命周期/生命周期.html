@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+	</head>
+		
+		
+	<body>
+		<div id="app">
+			{{msg}}
+		</div>
+		<script src="../Vue/vue.js"></script>
+		<script type="text/javascript">
+			const app=new Vue({
+				el:'#app',
+				data:{
+					msg:'hello word'
+				},
+				beforeCreate() {
+					console.log('beforeCreate')
+					//此时数据data和方法methods还未绑定到应用对象app上
+				},
+				created: () => {
+					console.log('created')
+					//此时数据data和方法methods还未绑定到应用对象app上
+				},
+				beforeMount() {
+					console.log('beforeMount')
+					//渲染之前，根据数据生成的DOM对象获取不到
+				},
+				mounted: () => {
+					//渲染之后，可以获取数据生成的DOM对象
+					console.log('mounted')
+				},
+				methods:{
+					// console.log('methods')
+				},
+				beforeUpdate(){
+					//数据更改，但内容为更改之前
+					console.log('beforeUpdate ')
+				},
+				updated() {
+					//内容更改完毕
+					console.log('updated')
+				},
+				beforeDestroy() {
+					//应用销毁之前
+					console.log('beforeDestroy')
+				},
+				destroyed() {
+					//应用销毁之后
+					console.log('destroyed')
+				}
+			})
+		</script>
+	</body>
+
+</html>
